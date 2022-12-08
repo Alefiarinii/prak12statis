@@ -1,0 +1,14 @@
+df_arini=read.delim("clipboard")
+head(df_arini)
+model_reg=lm(df_arini$Y~df_arini$X)
+summary(model_reg)
+Nilai R Squarenya adalah 0.403
+df_arini = read.delim("clipboard")
+df_arini$brick_dummy <- ifelse(df_arini$Brick == "Yes", 1,0)
+df_arini$N_dummy1 <- ifelse(df_arini$Neighborhood == "west", 1,0)
+df_arini$N_dummy2 <- ifelse(df_arini$Neighborhood == "North", 1,0)
+model = lm(df_arini$Price~df_arini$SqFt + df_arini$Bedrooms + df_arini$Bathrooms + df_arini$brick_dummy + df_arini$N_dummy1 + df_arini$N_dummy2)
+summary(model)
+
+by(df_arini$Price, df_arini$Neighborhood, mean)
+by(df_arini$Price, df_arini$Brick, mean)
